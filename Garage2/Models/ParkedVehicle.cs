@@ -17,17 +17,21 @@ namespace Garage2.Models
         public int Id { get; set; }
 
         [Required]
-        [Range(1, 3, ErrorMessage = "Select Type")]
+        [Range(1, 3, ErrorMessage = "Select ehat kind of vehicle ")]
         public VehicleTypeEnum VehicleType { get; set; }
 
         [Required]
-        [Range(1, 6, ErrorMessage = "Select Type")]
-
-
+        [Range(1, 6, ErrorMessage = "Select What kind of brand you have")]
         public BrandEnum Brand { get; set; }
+
+        [Range(1, 4, ErrorMessage = "Please select a car model")]
         public ModelEnum Model { get; set; }
+
+        
         public ColorEnum Color { get; set; }
+
         public string RegNo { get; set; }
+
         public int NoWheels { get; set; }
     }
 }
