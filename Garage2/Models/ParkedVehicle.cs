@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,13 +8,22 @@ namespace Garage2.Models
 {
     public class ParkedVehicle
     {
-        public enum VehicleTypeEnum { Car, Bus, Motorcycle }
-        public enum BrandEnum { Audi, Volvo, Merzedes, Saab, BMW, Tesla }
-        public enum ColorEnum { Green, White, Yellow, Black, Brown, Red, Blue }
-        public enum ModelEnum { Suv, SPort, CrossOver, Sedan }
+        public enum VehicleTypeEnum { Car = 1, Bus = 2, Motorcycle = 3 }
+        //public enum VehicleTypeEnum { Car, Bus, Motorcycle }
+        public enum BrandEnum { Audi = 1, Volvo = 2 , Merzedes = 3, Saab = 4, BMW = 5, Tesla = 6 }
+        public enum ColorEnum { Green = 1, White = 2, Yellow = 3, Black = 4, Brown = 5, Red = 6, Blue = 7}
+        public enum ModelEnum { Suv = 1, Sport = 2,  CrossOver = 3, Sedan = 4 }
 
         public int Id { get; set; }
+
+        [Required]
+        [Range(1, 3, ErrorMessage = "Select Type")]
         public VehicleTypeEnum VehicleType { get; set; }
+
+        [Required]
+        [Range(1, 6, ErrorMessage = "Select Type")]
+
+
         public BrandEnum Brand { get; set; }
         public ModelEnum Model { get; set; }
         public ColorEnum Color { get; set; }
