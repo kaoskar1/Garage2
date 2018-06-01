@@ -36,9 +36,9 @@ namespace Garage2.Models
 
 
 
-        public DateTime CreatedAt => DateTime.Now;
+        public DateTime CreatedAt { get; set; }
 
-        
+
     }
 
 }
