@@ -160,9 +160,14 @@
     <Compile Include="Migrations\201806010947363_fix.Designer.cs">
       <DependentUpon>201806010947363_fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806041215293_change timestampsfelds.cs" />
+    <Compile Include="Migrations\201806041215293_change timestampsfelds.Designer.cs">
+      <DependentUpon>201806041215293_change timestampsfelds.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2Context.cs" />
     <Compile Include="Models\ParkedVehicle.cs" />
+    <Compile Include="Models\Receipt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +219,7 @@
     <Content Include="Views\ParkedVehicles\Details.cshtml" />
     <Content Include="Views\ParkedVehicles\Edit.cshtml" />
     <Content Include="Views\ParkedVehicles\Index.cshtml" />
+    <Content Include="Views\ParkedVehicles\Receipt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -228,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806010947363_fix.resx">
       <DependentUpon>201806010947363_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041215293_change timestampsfelds.resx">
+      <DependentUpon>201806041215293_change timestampsfelds.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

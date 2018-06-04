@@ -20,6 +20,29 @@ namespace Garage2.Controllers
             return View(db.ParkedVehicles.ToList());
         }
 
+        // GET: ParkedVehicles/Receipt/1
+        public ActionResult Receipt(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ParkedVehicle parkedVehicle = db.ParkedVehicles.Find(id);
+            if (parkedVehicle == null)
+            {
+                return HttpNotFound();
+            }
+
+            Receipt receipt = new Receipt
+            {
+                RegNo = parkedVehicle.RegNo,
+                CheckInTime = parkedVehicle.CheckInTime
+            };
+
+            return View(receipt);
+        }
+
         // GET: ParkedVehicles/Details/5
         public ActionResult Details(int? id)
         {
@@ -51,7 +74,7 @@ namespace Garage2.Controllers
         {
             if (ModelState.IsValid)
             {
-                parkedVehicle.TimeStamp = DateTime.Now; 
+                parkedVehicle.CheckInTime = DateTime.Now;
                 db.ParkedVehicles.Add(parkedVehicle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
