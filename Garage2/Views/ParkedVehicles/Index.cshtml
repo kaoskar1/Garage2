@@ -15,13 +15,13 @@
             @Html.DisplayNameFor(model => model.VehicleType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Brand)
+            @Html.ActionLink(Html.DisplayNameFor(model => model.Brand).ToString(), "Index", new { sortOrder = ViewBag.BrandSortParam })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Color)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RegNo)
+            @Html.ActionLink(Html.DisplayNameFor(model => model.RegNo).ToString(), "Index", new { sortOrder = ViewBag.DateSortParam })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Model)
@@ -36,37 +36,38 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehicleType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Brand)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoWheels)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckInTime)
-        </td>
-        <td>
-            @Html.ActionLink("Change Park Details", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Park Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Check Out Vehicle", "Delete", new { id = item.Id })
-            @Html.ActionLink("Receipt", "Receipt", new { id = item.Id })
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoWheels)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckInTime)
+            </td>
+            <td>
+                @Html.ActionLink("Change Park Details", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Park Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Check Out Vehicle", "Delete", new { id = item.Id })
+                @Html.ActionLink("Receipt", "Receipt", new { id = item.Id })
 
-        </td>
-    </tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>

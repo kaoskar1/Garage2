@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,9 +16,30 @@ namespace Garage2.Controllers
         private Garage2Context db = new Garage2Context();
 
         // GET: ParkedVehicles
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.ParkedVehicles.ToList());
+            Debug.WriteLine("sortOrder: " + sortOrder);
+            ViewBag.RegNoSortParam = String.IsNullOrEmpty(sortOrder) ? "regno_desc" : "";
+            ViewBag.DateSortParam = sortOrder == "brand" ? "brand_desc" : "brand";
+            var parkedVehicles = from s in db.ParkedVehicles
+                           select s;
+            switch (sortOrder)
+            {
+                case "regno_desc":
+                    parkedVehicles = parkedVehicles.OrderByDescending(pv => pv.RegNo);
+                    break;
+                case "brand":
+                    parkedVehicles = parkedVehicles.OrderBy(pv => pv.Brand);
+                    break;
+                case "brand_desc":
+                    parkedVehicles = parkedVehicles.OrderByDescending(pv => pv.Brand);
+                    break;
+                default:
+                    parkedVehicles = parkedVehicles.OrderBy(pv => pv.RegNo);
+                    break;
+            }
+
+            return View(parkedVehicles.ToList());
         }
 
         // GET: ParkedVehicles/Receipt/1
