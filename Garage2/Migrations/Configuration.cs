@@ -17,6 +17,8 @@ namespace Garage2.Migrations
 
         protected override void Seed(Models.Garage2Context dbContext)
         {
+            Console.WriteLine("RUNNNING SEED METHOD RBB...");
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -29,75 +31,64 @@ namespace Garage2.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            try
+            dbContext.ParkedVehicles.AddOrUpdate(
+              p => p.RegNo,
+              new ParkedVehicle
+              {
+                  VehicleType = ParkedVehicle.VehicleTypeEnum.Car,
+                  Brand = ParkedVehicle.BrandEnum.Audi,
+                  Color = ParkedVehicle.ColorEnum.Black,
+                  Model = ParkedVehicle.ModelEnum.CrossOver,
+                  RegNo = "ABC123",
+                  NoWheels = 4,
+                  CheckInTime = DateTime.Now,
+                  CheckOutTime = DateTime.Now
+              },
+            new ParkedVehicle
             {
-                dbContext.ParkedVehicles.AddOrUpdate(
-                  p => p.RegNo,
-                  new ParkedVehicle
-                  {
-                      VehicleType = ParkedVehicle.VehicleTypeEnum.Car,
-                      Brand = ParkedVehicle.BrandEnum.Audi,
-                      Color = ParkedVehicle.ColorEnum.Black,
-                      Model = ParkedVehicle.ModelEnum.CrossOver,
-                      RegNo = "ABC123",
-                      NoWheels = 4,
-                      TimeStamp = DateTime.Now
-                  },
-                  new ParkedVehicle
-                  {
-                      VehicleType = ParkedVehicle.VehicleTypeEnum.Car,
-                      Brand = ParkedVehicle.BrandEnum.BMW,
-                      Color = ParkedVehicle.ColorEnum.Red,
-                      Model = ParkedVehicle.ModelEnum.Sedan,
-                      RegNo = "ABC124",
-                      NoWheels = 4,
-                      TimeStamp = DateTime.Now
-                  },
-                  new ParkedVehicle
-                  {
-                      VehicleType = ParkedVehicle.VehicleTypeEnum.Car,
-                      Brand = ParkedVehicle.BrandEnum.Merzedes,
-                      Color = ParkedVehicle.ColorEnum.White,
-                      Model = ParkedVehicle.ModelEnum.Sedan,
-                      RegNo = "ABC125",
-                      NoWheels = 4,
-                      TimeStamp = DateTime.Now
-                  },
-                  new ParkedVehicle
-                  {
-                      VehicleType = ParkedVehicle.VehicleTypeEnum.Car,
-                      Brand = ParkedVehicle.BrandEnum.Tesla,
-                      Color = ParkedVehicle.ColorEnum.Green,
-                      Model = ParkedVehicle.ModelEnum.Sedan,
-                      RegNo = "ABC126",
-                      NoWheels = 4,
-                      TimeStamp = DateTime.Now
-                  },
-                  new ParkedVehicle
-                  {
-                      VehicleType = ParkedVehicle.VehicleTypeEnum.Bus,
-                      Brand = ParkedVehicle.BrandEnum.Merzedes,
-                      Color = ParkedVehicle.ColorEnum.Yellow,
-                      RegNo = "ABC127",
-                      NoWheels = 6,
-                      TimeStamp = DateTime.Now
-                  }
-                );
-            }
-            catch (DbEntityValidationException e)
+                VehicleType = ParkedVehicle.VehicleTypeEnum.Car,
+                Brand = ParkedVehicle.BrandEnum.BMW,
+                Color = ParkedVehicle.ColorEnum.Red,
+                Model = ParkedVehicle.ModelEnum.Sedan,
+                RegNo = "ABC124",
+                NoWheels = 4,
+                CheckInTime = DateTime.Now,
+                CheckOutTime = DateTime.Now
+            },
+            new ParkedVehicle
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
+                VehicleType = ParkedVehicle.VehicleTypeEnum.Car,
+                Brand = ParkedVehicle.BrandEnum.Merzedes,
+                Color = ParkedVehicle.ColorEnum.White,
+                Model = ParkedVehicle.ModelEnum.Sedan,
+                RegNo = "ABC125",
+                NoWheels = 4,
+                CheckInTime = DateTime.Now,
+                CheckOutTime = DateTime.Now
+            },
+            new ParkedVehicle
+            {
+                VehicleType = ParkedVehicle.VehicleTypeEnum.Car,
+                Brand = ParkedVehicle.BrandEnum.Tesla,
+                Color = ParkedVehicle.ColorEnum.Green,
+                Model = ParkedVehicle.ModelEnum.Sedan,
+                RegNo = "ABC126",
+                NoWheels = 4,
+                CheckInTime = DateTime.Now,
+                CheckOutTime = DateTime.Now
+            },
+            new ParkedVehicle
+            {
+                VehicleType = ParkedVehicle.VehicleTypeEnum.Bus,
+                Brand = ParkedVehicle.BrandEnum.Merzedes,
+                Color = ParkedVehicle.ColorEnum.Yellow,
+                Model = ParkedVehicle.ModelEnum.Sport,
+                RegNo = "ABC127",
+                NoWheels = 6,
+                CheckInTime = DateTime.Now,
+                CheckOutTime = DateTime.Now
             }
+            );
         }
     }
 }
