@@ -32,5 +32,7 @@ namespace Garage2.Models
         public string RegNo { get; set; }
 
         public int NoWheels { get; set; }
+
+        public DateTime TimeStamp { get; set; }
     }
 }
