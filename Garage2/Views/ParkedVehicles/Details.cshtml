@@ -60,16 +60,16 @@
 
 
         <dt>
-            @Html.DisplayNameFor(model => model.TimeStamp)
+            @Html.DisplayNameFor(model => model.CheckInTime)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TimeStamp)
+            @Html.DisplayFor(model => model.CheckInTime)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.DisplayNameFor(model => model.CheckInTime) |
     @Html.ActionLink("Parked Vehicles", "Index")
 </p>
