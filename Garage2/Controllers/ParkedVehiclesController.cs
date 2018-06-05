@@ -16,13 +16,19 @@ namespace Garage2.Controllers
         private Garage2Context db = new Garage2Context();
 
         // GET: ParkedVehicles
-        public ActionResult ParkedVehicles(string sortOrder)
+        public ActionResult ParkedVehicles(string sortOrder, string searchString)
         {
             Debug.WriteLine("sortOrder: " + sortOrder);
             ViewBag.RegNoSortParam = String.IsNullOrEmpty(sortOrder) ? "regno_desc" : "";
             ViewBag.BrandSortParam = sortOrder == "brand" ? "brand_desc" : "brand";
             var parkedVehicles = from s in db.ParkedVehicles
                                  select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                parkedVehicles = parkedVehicles.Where(s => s.RegNo.Contains(searchString));
+            }
+
             switch (sortOrder)
             {
                 case "regno_desc":
@@ -95,6 +101,7 @@ namespace Garage2.Controllers
         {
             if (ModelState.IsValid)
             {
+                parkedVehicle.RegNo = parkedVehicle.RegNo.ToUpper();
                 parkedVehicle.CheckInTime = DateTime.Now;
                 db.ParkedVehicles.Add(parkedVehicle);
                 db.SaveChanges();

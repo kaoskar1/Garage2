@@ -6,9 +6,15 @@
 
 <h2>Parked Vehicles</h2>
 
-<p>
-    @Html.ActionLink("Park Vehicle", "CheckIn")
-</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search by registration number: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
