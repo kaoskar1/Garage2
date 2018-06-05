@@ -16,13 +16,19 @@ namespace Garage2.Controllers
         private Garage2Context db = new Garage2Context();
 
         // GET: ParkedVehicles
-        public ActionResult ParkedVehicles(string sortOrder)
+        public ActionResult ParkedVehicles(string sortOrder, string searchString)
         {
             Debug.WriteLine("sortOrder: " + sortOrder);
             ViewBag.RegNoSortParam = String.IsNullOrEmpty(sortOrder) ? "regno_desc" : "";
             ViewBag.BrandSortParam = sortOrder == "brand" ? "brand_desc" : "brand";
             var parkedVehicles = from s in db.ParkedVehicles
                                  select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                parkedVehicles = parkedVehicles.Where(s => s.RegNo.Contains(searchString));
+            }
+
             switch (sortOrder)
             {
                 case "regno_desc":
@@ -95,6 +101,7 @@ namespace Garage2.Controllers
         {
             if (ModelState.IsValid)
             {
+                parkedVehicle.RegNo = parkedVehicle.RegNo.ToUpper();
                 parkedVehicle.CheckInTime = DateTime.Now;
                 db.ParkedVehicles.Add(parkedVehicle);
                 db.SaveChanges();
@@ -124,16 +131,24 @@ namespace Garage2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels,CheckInTime")] ParkedVehicle parkedVehicle)
+        public ActionResult Edit([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels")] ParkedVehicle parkedVehicle)
         {
-            if (ModelState.IsValid)
-            {
-               parkedVehicle.CheckInTime = DateTime.Now;
-                db.Entry(parkedVehicle).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("ParkedVehicles");
-            }
-            return View(parkedVehicle);
+            if (!ModelState.IsValid) return View(parkedVehicle);
+
+            ParkedVehicle parked = db.ParkedVehicles.Find(parkedVehicle.Id);
+            parked.Id = parkedVehicle.Id;
+            parked.VehicleType = parkedVehicle.VehicleType;
+            parked.Brand = parkedVehicle.Brand;
+            parked.Color = parkedVehicle.Color;
+            parked.RegNo = parkedVehicle.RegNo;
+            parked.Model = parkedVehicle.Model;
+            parked.NoWheels = parkedVehicle.NoWheels;
+
+            db.Entry(parked).State = EntityState.Modified;
+            db.Entry(parked).Property(p => p.CheckInTime).IsModified = false;
+            db.SaveChanges();
+
+            return RedirectToAction("ParkedVehicles");
         }
 
         // GET: ParkedVehicles/CheckOut/5

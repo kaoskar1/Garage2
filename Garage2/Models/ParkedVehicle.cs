@@ -17,6 +17,7 @@ namespace Garage2.Models
 
         [Required]
         [Range(1, 3, ErrorMessage = "Vehicle Type is required")]
+        [Display(Name = "Vehicle Type")]
         public VehicleTypeEnum VehicleType { get; set; }
 
         [Required]
@@ -28,10 +29,13 @@ namespace Garage2.Models
 
         public ColorEnum Color { get; set; }
 
+        [Display(Name = "Registration Number")]
         public string RegNo { get; set; }
 
+        [Display(Name = "Number of Wheels")]
         public int NoWheels { get; set; }
 
+        [Display(Name = "Checkin Time")]
         public DateTime CheckInTime { get; set; }
         //public DateTime CheckOutTime { get; set}
     }

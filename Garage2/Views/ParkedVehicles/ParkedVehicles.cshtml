@@ -6,9 +6,15 @@
 
 <h2>Parked Vehicles</h2>
 
-<p>
-    @Html.ActionLink("Park Vehicle", "CheckIn")
-</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search by registration number: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -61,9 +67,9 @@
                 @Html.DisplayFor(modelItem => item.CheckInTime)
             </td>
             <td>
-                @Html.ActionLink("Change Park Details", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Park Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Check Out Vehicle", "CheckOut", new { id = item.Id })
+                @Html.ActionLink("Edit Details", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Check Out", "CheckOut", new { id = item.Id }) |
                 @Html.ActionLink("Receipt", "Receipt", new { id = item.Id })
 
             </td>
