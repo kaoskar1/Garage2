@@ -67,9 +67,9 @@
                 @Html.DisplayFor(modelItem => item.CheckInTime)
             </td>
             <td>
-                @Html.ActionLink("Change Parking Details", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Parking Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Check Out Vehicle", "CheckOut", new { id = item.Id }) |
+                @Html.ActionLink("Edit Details", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Check Out", "CheckOut", new { id = item.Id }) |
                 @Html.ActionLink("Receipt", "Receipt", new { id = item.Id })
 
             </td>
