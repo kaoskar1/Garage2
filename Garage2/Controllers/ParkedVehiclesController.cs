@@ -22,7 +22,7 @@ namespace Garage2.Controllers
             ViewBag.RegNoSortParam = String.IsNullOrEmpty(sortOrder) ? "regno_desc" : "";
             ViewBag.BrandSortParam = sortOrder == "brand" ? "brand_desc" : "brand";
             var parkedVehicles = from s in db.ParkedVehicles
-                           select s;
+                                 select s;
             switch (sortOrder)
             {
                 case "regno_desc":
@@ -92,7 +92,7 @@ namespace Garage2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CheckIn([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels,TimeStamp")] ParkedVehicle parkedVehicle)
+        public ActionResult Create([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels")] ParkedVehicle parkedVehicle)
         {
             if (ModelState.IsValid)
             {
@@ -125,7 +125,7 @@ namespace Garage2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels,TimeStamp")] ParkedVehicle parkedVehicle)
+        public ActionResult Edit([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels")] ParkedVehicle parkedVehicle)
         {
             if (ModelState.IsValid)
             {
@@ -144,11 +144,22 @@ namespace Garage2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             ParkedVehicle parkedVehicle = db.ParkedVehicles.Find(id);
             if (parkedVehicle == null)
             {
                 return HttpNotFound();
             }
+
+            Receipt receipt = new Receipt
+            {
+                CheckInTime = receipt.CheckInTime,
+                CheckOutTime = receipt.CheckOutTime,
+                RegNo = receipt.RegNo
+
+            };
+
+
             return View(parkedVehicle);
         }
 
