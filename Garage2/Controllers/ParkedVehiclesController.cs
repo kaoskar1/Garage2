@@ -83,7 +83,6 @@ namespace Garage2.Controllers
         // GET: ParkedVehicles/CheckIn
         public ActionResult CheckIn()
         {
-
             return View();
         }
 
@@ -92,14 +91,14 @@ namespace Garage2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels")] ParkedVehicle parkedVehicle)
+        public ActionResult CheckIn([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels")] ParkedVehicle parkedVehicle)
         {
             if (ModelState.IsValid)
             {
                 parkedVehicle.CheckInTime = DateTime.Now;
                 db.ParkedVehicles.Add(parkedVehicle);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ParkedVehicles");
             }
 
             return View(parkedVehicle);
@@ -125,14 +124,14 @@ namespace Garage2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels")] ParkedVehicle parkedVehicle)
+        public ActionResult Edit([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels,CheckInTime")] ParkedVehicle parkedVehicle)
         {
             if (ModelState.IsValid)
             {
                 //parkedVehicle.TimeStamp = DateTime.Now;
                 db.Entry(parkedVehicle).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ParkedVehicles");
             }
             return View(parkedVehicle);
         }
@@ -151,14 +150,13 @@ namespace Garage2.Controllers
                 return HttpNotFound();
             }
 
-            Receipt receipt = new Receipt
-            {
-                CheckInTime = receipt.CheckInTime,
-                CheckOutTime = receipt.CheckOutTime,
-                RegNo = receipt.RegNo
-
-            };
-
+            //parkedVehicle.CheckOutTime = DateTime.Now;
+            //Receipt receipt = new Receipt
+            //{
+            //    CheckInTime = receipt.CheckInTime,
+            //    CheckOutTime = receipt.CheckOutTime,
+            //    RegNo = receipt.RegNo
+            //};
 
             return View(parkedVehicle);
         }
@@ -171,7 +169,7 @@ namespace Garage2.Controllers
             ParkedVehicle parkedVehicle = db.ParkedVehicles.Find(id);
             db.ParkedVehicles.Remove(parkedVehicle);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ParkedVehicles");
         }
 
         protected override void Dispose(bool disposing)

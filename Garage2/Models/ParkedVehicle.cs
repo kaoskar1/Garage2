@@ -33,7 +33,7 @@ namespace Garage2.Models
         public int NoWheels { get; set; }
 
         public DateTime CheckInTime { get; set; }
-        public DateTime CheckOutTime { get; set; }
+        //public DateTime CheckOutTime { get; set}
     }
 
     //    public class Parkingtime

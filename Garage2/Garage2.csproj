@@ -164,6 +164,10 @@
     <Compile Include="Migrations\201806041215293_change timestampsfelds.Designer.cs">
       <DependentUpon>201806041215293_change timestampsfelds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806050848063_Remove CheckInTime.cs" />
+    <Compile Include="Migrations\201806050848063_Remove CheckInTime.Designer.cs">
+      <DependentUpon>201806050848063_Remove CheckInTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2Context.cs" />
     <Compile Include="Models\ParkedVehicle.cs" />
@@ -237,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806041215293_change timestampsfelds.resx">
       <DependentUpon>201806041215293_change timestampsfelds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806050848063_Remove CheckInTime.resx">
+      <DependentUpon>201806050848063_Remove CheckInTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

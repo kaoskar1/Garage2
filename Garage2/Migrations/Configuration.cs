@@ -41,8 +41,7 @@ namespace Garage2.Migrations
                   Model = ParkedVehicle.ModelEnum.CrossOver,
                   RegNo = "ABC123",
                   NoWheels = 4,
-                  CheckInTime = DateTime.Now,
-                  CheckOutTime = DateTime.Now
+                  CheckInTime = DateTime.Now
               },
             new ParkedVehicle
             {
@@ -52,8 +51,7 @@ namespace Garage2.Migrations
                 Model = ParkedVehicle.ModelEnum.Sedan,
                 RegNo = "ABC124",
                 NoWheels = 4,
-                CheckInTime = DateTime.Now,
-                CheckOutTime = DateTime.Now
+                CheckInTime = DateTime.Now
             },
             new ParkedVehicle
             {
@@ -63,8 +61,7 @@ namespace Garage2.Migrations
                 Model = ParkedVehicle.ModelEnum.Sedan,
                 RegNo = "ABC125",
                 NoWheels = 4,
-                CheckInTime = DateTime.Now,
-                CheckOutTime = DateTime.Now
+                CheckInTime = DateTime.Now
             },
             new ParkedVehicle
             {
@@ -74,8 +71,7 @@ namespace Garage2.Migrations
                 Model = ParkedVehicle.ModelEnum.Sedan,
                 RegNo = "ABC126",
                 NoWheels = 4,
-                CheckInTime = DateTime.Now,
-                CheckOutTime = DateTime.Now
+                CheckInTime = DateTime.Now
             },
             new ParkedVehicle
             {
@@ -85,8 +81,7 @@ namespace Garage2.Migrations
                 Model = ParkedVehicle.ModelEnum.Sport,
                 RegNo = "ABC127",
                 NoWheels = 6,
-                CheckInTime = DateTime.Now,
-                CheckOutTime = DateTime.Now
+                CheckInTime = DateTime.Now
             }
             );
         }
