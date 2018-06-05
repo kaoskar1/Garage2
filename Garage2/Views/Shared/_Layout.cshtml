@@ -21,11 +21,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink((string) ViewBag.ApplicationName, "Index", "ParkedVehicles", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink((string) ViewBag.ApplicationName, "ParkedVehicles", "ParkedVehicles", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Park Vehicle", "Create", "ParkedVehicles")</li>
+                    <li>@Html.ActionLink("Park Vehicle", "CheckIn", "ParkedVehicles")</li>
                 </ul>
             </div>
         </div>

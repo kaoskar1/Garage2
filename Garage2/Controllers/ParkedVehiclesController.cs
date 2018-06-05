@@ -16,11 +16,11 @@ namespace Garage2.Controllers
         private Garage2Context db = new Garage2Context();
 
         // GET: ParkedVehicles
-        public ActionResult Index(string sortOrder)
+        public ActionResult ParkedVehicles(string sortOrder)
         {
             Debug.WriteLine("sortOrder: " + sortOrder);
             ViewBag.RegNoSortParam = String.IsNullOrEmpty(sortOrder) ? "regno_desc" : "";
-            ViewBag.DateSortParam = sortOrder == "brand" ? "brand_desc" : "brand";
+            ViewBag.BrandSortParam = sortOrder == "brand" ? "brand_desc" : "brand";
             var parkedVehicles = from s in db.ParkedVehicles
                            select s;
             switch (sortOrder)
@@ -80,19 +80,19 @@ namespace Garage2.Controllers
             return View(parkedVehicle);
         }
 
-        // GET: ParkedVehicles/Create
-        public ActionResult Create()
+        // GET: ParkedVehicles/CheckIn
+        public ActionResult CheckIn()
         {
 
             return View();
         }
 
-        // POST: ParkedVehicles/Create
+        // POST: ParkedVehicles/CheckIn
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels,TimeStamp")] ParkedVehicle parkedVehicle)
+        public ActionResult CheckIn([Bind(Include = "Id,VehicleType,Brand,Color,RegNo,Model,NoWheels,TimeStamp")] ParkedVehicle parkedVehicle)
         {
             if (ModelState.IsValid)
             {
@@ -137,8 +137,8 @@ namespace Garage2.Controllers
             return View(parkedVehicle);
         }
 
-        // GET: ParkedVehicles/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: ParkedVehicles/CheckOut/5
+        public ActionResult CheckOut(int? id)
         {
             if (id == null)
             {
@@ -152,10 +152,10 @@ namespace Garage2.Controllers
             return View(parkedVehicle);
         }
 
-        // POST: ParkedVehicles/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: ParkedVehicles/CheckOut/5
+        [HttpPost, ActionName("CheckOut")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult CheckOutConfirmed(int id)
         {
             ParkedVehicle parkedVehicle = db.ParkedVehicles.Find(id);
             db.ParkedVehicles.Remove(parkedVehicle);

@@ -9,7 +9,7 @@ namespace Garage2.Models
     public class ParkedVehicle
     {
         public enum VehicleTypeEnum { Car = 1, Bus = 2, Motorcycle = 3 }
-        public enum BrandEnum { Audi = 1, Volvo = 2, Merzedes = 3, Saab = 4, BMW = 5, Tesla = 6 }
+        public enum BrandEnum { Audi = 1, BMW = 2, Merzedes = 3, Saab = 4, Tesla = 5, Volvo = 6 }
         public enum ColorEnum { Green = 1, White = 2, Yellow = 3, Black = 4, Brown = 5, Red = 6, Blue = 7 }
         public enum ModelEnum { Suv = 1, Sport = 2, CrossOver = 3, Sedan = 4 }
 
