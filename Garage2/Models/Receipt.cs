@@ -13,5 +13,8 @@ namespace Garage2.Models
         public DateTime CheckInTime { get; set; }
 
         public DateTime CheckOutTime { get; set; }
+
+
+        public int Price { get; set; }
     }
 }

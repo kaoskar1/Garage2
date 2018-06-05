@@ -128,7 +128,7 @@ namespace Garage2.Controllers
         {
             if (ModelState.IsValid)
             {
-                //parkedVehicle.TimeStamp = DateTime.Now;
+               parkedVehicle.CheckInTime = DateTime.Now;
                 db.Entry(parkedVehicle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("ParkedVehicles");
