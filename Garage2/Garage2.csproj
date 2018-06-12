@@ -175,6 +175,14 @@
     <Compile Include="Migrations\201806121204104_Add VehicleType.Designer.cs">
       <DependentUpon>201806121204104_Add VehicleType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806121217571_Add Member.cs" />
+    <Compile Include="Migrations\201806121217571_Add Member.Designer.cs">
+      <DependentUpon>201806121217571_Add Member.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806121324181_Add Member and VehicleType to seed method.cs" />
+    <Compile Include="Migrations\201806121324181_Add Member and VehicleType to seed method.Designer.cs">
+      <DependentUpon>201806121324181_Add Member and VehicleType to seed method.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2Context.cs" />
     <Compile Include="Models\Member.cs" />
@@ -271,6 +279,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806121204104_Add VehicleType.resx">
       <DependentUpon>201806121204104_Add VehicleType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806121217571_Add Member.resx">
+      <DependentUpon>201806121217571_Add Member.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806121324181_Add Member and VehicleType to seed method.resx">
+      <DependentUpon>201806121324181_Add Member and VehicleType to seed method.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
