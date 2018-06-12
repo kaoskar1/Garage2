@@ -37,20 +37,7 @@ namespace Garage2.Models
 
         [Display(Name = "Checkin Time")]
         public DateTime CheckInTime { get; set; }
-        //public DateTime CheckOutTime { get; set}
     }
-
-    //    public class Parkingtime
-    //    {
-
-    //    }
-    //        public class ParkingTimeModel { 
-
-    //        public List<Parkingtime>  TimeParked{ get; set; }
-
-
-
-    //}
 
 
 }
