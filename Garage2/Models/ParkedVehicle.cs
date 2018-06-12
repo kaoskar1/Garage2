@@ -15,10 +15,10 @@ namespace Garage2.Models
 
         public int Id { get; set; }
 
-        [Required]
-        [Range(1, 3, ErrorMessage = "Vehicle Type is required")]
-        [Display(Name = "Vehicle Type")]
-        public VehicleTypeEnum VehicleType { get; set; }
+        //[Required]
+        //[Range(1, 3, ErrorMessage = "Vehicle Type is required")]
+        //[Display(Name = "Vehicle Type")]
+        //public VehicleTypeEnum VehicleType { get; set; }
 
         [Required]
         [Range(1, 6, ErrorMessage = "Brand is required")]
@@ -37,6 +37,10 @@ namespace Garage2.Models
 
         [Display(Name = "Checkin Time")]
         public DateTime CheckInTime { get; set; }
+
+        // Relational properties
+        public virtual VehicleType VehicleType { get; set; }
+        public virtual Member Member { get; set; }
     }
 
 

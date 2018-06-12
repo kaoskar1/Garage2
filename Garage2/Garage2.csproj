@@ -148,7 +148,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\ParkedVehicles2Controller.cs" />
     <Compile Include="Controllers\ParkedVehiclesController.cs" />
+    <Compile Include="Controllers\VehicleTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -168,10 +171,16 @@
     <Compile Include="Migrations\201806050848063_Remove CheckInTime.Designer.cs">
       <DependentUpon>201806050848063_Remove CheckInTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806121204104_Add VehicleType.cs" />
+    <Compile Include="Migrations\201806121204104_Add VehicleType.Designer.cs">
+      <DependentUpon>201806121204104_Add VehicleType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2Context.cs" />
+    <Compile Include="Models\Member.cs" />
     <Compile Include="Models\ParkedVehicle.cs" />
     <Compile Include="Models\Receipt.cs" />
+    <Compile Include="Models\VehicleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +233,21 @@
     <Content Include="Views\ParkedVehicles\Edit.cshtml" />
     <Content Include="Views\ParkedVehicles\ParkedVehicles.cshtml" />
     <Content Include="Views\ParkedVehicles\Receipt.cshtml" />
+    <Content Include="Views\ParkedVehicles2\Create.cshtml" />
+    <Content Include="Views\ParkedVehicles2\Delete.cshtml" />
+    <Content Include="Views\ParkedVehicles2\Details.cshtml" />
+    <Content Include="Views\ParkedVehicles2\Edit.cshtml" />
+    <Content Include="Views\ParkedVehicles2\Index.cshtml" />
+    <Content Include="Views\VehicleTypes\Create.cshtml" />
+    <Content Include="Views\VehicleTypes\Delete.cshtml" />
+    <Content Include="Views\VehicleTypes\Details.cshtml" />
+    <Content Include="Views\VehicleTypes\Edit.cshtml" />
+    <Content Include="Views\VehicleTypes\Index.cshtml" />
+    <Content Include="Views\Members\Create.cshtml" />
+    <Content Include="Views\Members\Delete.cshtml" />
+    <Content Include="Views\Members\Details.cshtml" />
+    <Content Include="Views\Members\Edit.cshtml" />
+    <Content Include="Views\Members\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -244,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806050848063_Remove CheckInTime.resx">
       <DependentUpon>201806050848063_Remove CheckInTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806121204104_Add VehicleType.resx">
+      <DependentUpon>201806121204104_Add VehicleType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
